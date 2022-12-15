@@ -1,8 +1,8 @@
 import { Route, Link, Routes } from "react-router-dom";
 import CustomersPage from "./customers";
-import EditProductPage from "./editProductPage";
+import EditCustomerPage from "./editProduct";
 import ProductsPage from "./products";
-import PurchasesPage from "./purchases";
+import Purchases from "./purchases";
 
 function Main() {
 
@@ -15,11 +15,10 @@ function Main() {
         <Link to="/purchases">purchases</Link><br /><br />
 
         <Routes>
-            <Route path="/products" element={<ProductsPage />} >
-                <Route path="editproduct" element={<EditProductPage/>} />
-            </Route>
-            <Route path="/customers" element={<CustomersPage/>} />
-            <Route path="/purchases" element={<PurchasesPage/>} />
+            <Route path="/products" element={<ProductsPage />}/ >
+            <Route path="/editproduct/:id" element={<EditCustomerPage />} />
+            <Route path="/customers" element={<CustomersPage />} />
+            <Route path="/purchases" element={<Purchases/>} />
         </Routes>
     </div>
 }

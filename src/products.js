@@ -3,7 +3,7 @@ import ProductComp from "./product";
 
 function ProductsPage() {
 
-    debugger;
+    // debugger;
     const store = useSelector(state=>state);
 
     return <div>
