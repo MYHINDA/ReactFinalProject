@@ -7,9 +7,10 @@ const initalValue = {
         { id: 5678,     name: "PC", price: 150, quantity: 10 }
     ],
     customers: [
-        { id: uuidv4(), firstName: "Avi", LastName: "Cohen", city: "TLV" },
-        { id: uuidv4(), firstName: "Israel", LastName: "Israeli", city: "Jerusalem" },
-        { id: 1234,     firstName: "Israel", LastName: "Israeli", city: "Jerusalem" }
+        { id: uuidv4(), firstName: "Avi",    lastName: "Cohen", city: "TLV" },
+        { id: uuidv4(), firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
+        { id: 1234, firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
+        { id: 4321, firstName: "Avi", lastName: "Cohen", city: "Tzfat" }
     ],
     purchases: [
         { id: 1, customerId: 1234, productId: 5678, date: "15/12/2023" },
@@ -19,7 +20,7 @@ const initalValue = {
 
 function AppReducer(state = initalValue, action) {
     
-    // debugger;
+    debugger;
     switch (action.type) {
         case "ADD_PRODUCT":
             return { ...state, products:[...state.products,action.payload] };
@@ -44,18 +45,28 @@ function AppReducer(state = initalValue, action) {
                 if (action.payload.price !== 0)
                     prod_arr1[prod_index1].price = action.payload.price
                 
-                if (action.payload.quantity >=0 )
+                if (action.payload.quantity >= 0)
                     prod_arr1[prod_index1].quantity = action.payload.quantity
                 
             }
                 
             return { ...state, products: prod_arr1 }
-        
         case "EDIT_CUSTOMER":
             let cust_arr1 = state.customers;
-            let cust_index1 = cust_arr1.findIndex(x => x.id === action.payload.id)
-            if (cust_index1 >= 0)
-                cust_arr1[cust_index1] = action.payload
+            let cust_index1 = cust_arr1.findIndex(x => x.id === parseInt(action.payload.id))
+
+
+            if (cust_index1 >= 0) {
+                if (action.payload.firstName !== "")
+                    cust_arr1[cust_index1].firstName = action.payload.firstName 
+
+                if (action.payload.lastName !== "")
+                    cust_arr1[cust_index1].lastName = action.payload.lastName
+
+                if (action.payload.city !== "")
+                    cust_arr1[cust_index1].city = action.payload.city
+
+            }
             return { ...state, customers: cust_arr1 }
         
         case "EDIT_PURCHASES":
