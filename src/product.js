@@ -36,7 +36,7 @@ function ProductComp(props) {
         for (let i = 0; i < temp.length; i++){
             temp[i][0] = {
                 ...temp[i][0],
-                date: purArr.filter(x => x.customerId === temp[i][0].id).map(p => p.date)
+                date: purArr.filter(x => x.customerId === temp[i].id).map(p => p.date)
             }
             temp[i][0].date = new Set(temp[i][0].date)
             temp[i][0].date = Array.from(temp[i][0].date)
@@ -89,7 +89,7 @@ function ProductComp(props) {
                         </select>
                     }
                     {
-                        saveProd && <input type={"button"} value="save" onClick={() => dispatch({ type: "ADD_PURCHASES", payload: purchas }) && setSaveProd(!saveProd)} />
+                        saveProd && <input type={"button"} value="save" onClick={() => dispatch({ type: "ADD_PURCHASES", payload: purchas }) && setSaveProd(!saveProd) } />
                     }
                 </div>
             })

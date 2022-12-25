@@ -13,19 +13,25 @@ function EditProductPage() {
     const [product, setProduct] = useState({ id: params.id, name: "", price: 0, quantity:-1 })
     
 
-    const updateProduct = () => {
+    const updateProduct = (e) => {
         dispatch({ type: "EDIT_PRODUCT", payload: product })
         navigate("/products")
+        e.preventDefault()
     }
 
     return <div>
 
         <h2>EditProduct Page</h2>
 
+        <form onSubmit={updateProduct}>
         Name: <input type="text" onChange={(e) => setProduct({ ...product, name: e.target.value })} /> <br /><br />
         Price: <input type="text" onChange={(e) => setProduct({ ...product, price: e.target.value })} /> <br /><br />
         Quantity: <input type="text" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} /> <br /><br />
-        <input type={"button"} value="Update" onClick={updateProduct}/>
+            <input type={"submit"} value="Update" name="update" />
+            
+            <input type={"button"} value="delete" onClick={() => dispatch({ type: "DELETE_PRODUCT", payload: product }) && navigate('/products')} />
+            <br/><br/>
+        </form>
     </div>
 }
 
