@@ -1,27 +1,57 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link,Outlet } from "react-router-dom";
 
 function ProductComp(props) {
-    // debugger;
-    const store = useSelector(state=>state)
+
+    const store = useSelector(state => state)
+
+    const dispatch = useDispatch()
 
     const [customer, setCustomer] = useState([])
 
+    const [comboProd, setComboProd] = useState(false)
+    
+    const [saveProd, setSaveProd] = useState(false)
+
+    var timeNow = new Date();
+    var israeliDate = timeNow.getDate() + '/' + (timeNow.getMonth() + 1) + '/' + timeNow.getFullYear();
+
+    const [purchas, setPurchas] = useState({ customerId: 0, productId: 0, date: israeliDate })
+    
     useEffect(() => {
 
-        let arr = store.purchases.filter(x => x.productId === props.props.id).map(x => x.customerId)
+
+        let purArr = store.purchases.filter(x => x.productId === props.props.id)
+        let cusIdArr = purArr.map(x => x.customerId)
+        cusIdArr = new Set(cusIdArr)
+        cusIdArr = Array.from(cusIdArr)
 
         let temp = []
 
-        for (let i = 0; i < arr.length; i++) {
-            temp.push(store.customers.filter(x => x.id == arr[i]))
+        for (let i = 0; i < purArr.length; i++) {
+            temp.push(store.customers.filter(x => x.id == purArr[i]))
+        }
+
+        for (let i = 0; i < temp.length; i++){
+            temp[i][0] = {
+                ...temp[i][0],
+                date: purArr.filter(x => x.customerId === temp[i][0].id).map(p => p.date)
+            }
+            temp[i][0].date = new Set(temp[i][0].date)
+            temp[i][0].date = Array.from(temp[i][0].date)
         }
         temp = temp.flat()
 
 
         setCustomer([...customer, temp].flat())
     }, [])
+
+    const addPurchas = (e, item) => {
+        setSaveProd(!saveProd)
+        setPurchas({...purchas, productId:store.products.find(x=>x.name===e).id, customerId:item.id})
+    }
+    
 
 
     return <div style={{border:"2px solid black", margin:"5px"}}>
@@ -31,21 +61,40 @@ function ProductComp(props) {
         
         price: {props.props.price}<br />
         Quantity: {props.props.quantity}<br /><br />
-        <Outlet />
 
-        <div>
+                
+     {/* < div > */}
             {
                 customer.map(item => {
                 return <div key={item.id}>
                     <Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> <br />
                 
                 <ul>
-                    <li>{item.city }</li>
-                </ul>
+                        City: <li>{item.city}</li>
+                        Date: <ul>{
+                            item.date.map(item => {
+                                return <li>{item}</li>
+                        })
+                        }
+                        </ul>
+                    </ul>
+                    <input type={"button"} value="ADD" onClick={() => setComboProd(!comboProd)} />
+                    {
+                        comboProd &&
+                        <select name="products" value="select" onChange={(e) => addPurchas(e.target.value, item)}>
+                            <option>Choose your item</option>
+                            {store.products.map(item =>
+                                <option>{item.name}</option>
+                            )}
+                        </select>
+                    }
+                    {
+                        saveProd && <input type={"button"} value="save" onClick={() => dispatch({ type: "ADD_PURCHASES", payload: purchas }) && setSaveProd(!saveProd)} />
+                    }
                 </div>
             })
             }
-        </div>
+        {/* </div> */}
         
     </div>
 }

@@ -4,7 +4,7 @@ const initalValue = {
     products: [
         { id: uuidv4(), name: "PC", price: 100, quantity: 10 },
         { id: uuidv4(), name: "TV", price: 200, quantity: 5 },
-        { id: 5678,     name: "PC", price: 150, quantity: 10 }
+        { id: 5678,     name: "CEL", price: 150, quantity: 10 }
     ],
     customers: [
         { id: uuidv4(), firstName: "Avi",    lastName: "Cohen", city: "TLV" },
@@ -13,8 +13,9 @@ const initalValue = {
         { id: 4321, firstName: "Avi", lastName: "Cohen", city: "Tzfat" }
     ],
     purchases: [
-        { id: 1, customerId: 1234, productId: 5678, date: "15/12/2023" },
-        { id: 2, customerId: 4321, productId: 5678, date: "15/12/2023" }
+        { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
+        { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
+        { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" }
     ]
 }
 
@@ -77,17 +78,22 @@ function AppReducer(state = initalValue, action) {
             return { ...state, purchases: pur_arr1 }
             
         case "DELETE_PRODUCT":
+            let arr = []
             let prod_arr = state.products;
+            let purchas_arr = state.purchases;
             let prod_index = prod_arr.findIndex(x => x.id === action.payload.id)
-            if (prod_index >= 0)
+            if (prod_index >= 0) {
                 prod_arr.splice(prod_index, 1)
+                arr = purchas_arr.filter(x => x.productId !== parseInt(action.payload.id))
+            }
             return { ...state, products: prod_arr };
 
         case "DELETE_CUSTOMER":
             let cust_arr = state.customers;
-            let cust_index = cust_arr.findIndex(x => x.id === action.payload.id)
+            let cust_index = cust_arr.findIndex(x => x.id === parseInt(action.payload.id))
             if (cust_index >= 0)
                 cust_arr.splice(cust_index, 1)
+            
             return { ...state, customers: cust_arr };
         
         case "DELETE_PURCHASES":
@@ -101,6 +107,5 @@ function AppReducer(state = initalValue, action) {
             return state;
     }
 }
-
 
 export default AppReducer;
