@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
@@ -83,7 +84,10 @@ function ProductComp(props) {
                             }
                             </ul>
                         </ul>
-                        <input type={"button"} value="ADD" onClick={() => setComboProd(true)} />
+                        <Button variant="contained" onClick={() => setComboProd(true)}>ADD</Button>
+                        {/* <input type={"button"} value="ADD" onClick={() => setComboProd(true)} /> */}
+
+                        {/* https://mui.com/material-ui/react-select/ */}
                         {
                             comboProd &&
                             <select name="products" value="select" onChange={(e) => addPurchas(e.target.value, item)}>
@@ -94,7 +98,9 @@ function ProductComp(props) {
                             </select>
                         }
                         {
-                            saveProd && <input type={"button"} value="save" onClick={save } />
+                            saveProd &&
+                            // <input type={"button"} value="save" onClick={save} />
+                            <Button variant="contained" onClick={save}>save</Button>
                         }
                     </div>
                 })

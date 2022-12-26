@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 
 
 function EditCustomerPage() {
@@ -50,7 +51,9 @@ function EditCustomerPage() {
                 City: <input type="text" onChange={(e) => setCustomer({ ...customer, city: e.target.value })} /> <br /><br />
 
                 <input type={"submit"} value="Update" />
-                <input type={"button"} value="delete" onClick={deleteCustomer} />
+                {/* <input type={"button"} value="delete" onClick={deleteCustomer} /> */}
+                <Button variant="contained" onClick={deleteCustomer}>Delete</Button>
+                
                 <br /><br />
 
             </form>
