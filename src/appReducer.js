@@ -21,7 +21,7 @@ const initalValue = {
 
 function AppReducer(state = initalValue, action) {
     
-    // debugger;
+    debugger;
     switch (action.type) {
         case "ADD_PRODUCT":
             return { ...state, products:[...state.products,action.payload] };
@@ -89,12 +89,17 @@ function AppReducer(state = initalValue, action) {
             return { ...state, products: prod_arr, purchases:arr };
 
         case "DELETE_CUSTOMER":
+            let arr2 = []
             let cust_arr = state.customers;
+            let purchas_arr2 = state.purchases;
             let cust_index = cust_arr.findIndex(x => x.id === parseInt(action.payload.id))
-            if (cust_index >= 0)
+            if (cust_index >= 0) {
                 cust_arr.splice(cust_index, 1)
+                arr2 = purchas_arr2.filter(x=>x.customerId !== parseInt(action.payload.id))
+            }
+                
             
-            return { ...state, customers: cust_arr };
+            return { ...state, customers: cust_arr, purchases:arr2 };
         
         case "DELETE_PURCHASES":
             let pur_arr = state.customers;
