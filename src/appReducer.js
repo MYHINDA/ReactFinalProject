@@ -7,10 +7,10 @@ const initalValue = {
         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
     ],
     customers: [
-        { id: uuidv4(), firstName: "Avi",    lastName: "Cohen", city: "TLV" },
+        { id: uuidv4(), firstName: "Avi",    lastName: "Levi", city: "TLV" },
         { id: uuidv4(), firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
-        { id: 1234, firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
-        { id: 4321, firstName: "Avi", lastName: "Cohen", city: "Tzfat" }
+        { id: 1234, firstName: "Israela", lastName: "Israeli", city: "Jerusalem" },
+        { id: 4321, firstName: "Aviva", lastName: "Cohen", city: "Tzfat" }
     ],
     purchases: [
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
