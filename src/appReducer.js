@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 const initalValue = {
     products: [
-        { id: 2222, name: "PC", price: 100, quantity: 10 },
-        { id: 1111, name: "TV", price: 200, quantity: 5 },
+        { id: uuidv4(), name: "PC", price: 100, quantity: 10 },
+        { id: uuidv4(), name: "TV", price: 200, quantity: 5 },
         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
     ],
     customers: [
