@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 
 
@@ -17,13 +17,14 @@ function EditCustomerPage() {
     const [customer, setCustomer] = useState({ id: params.id, firstName: "", lastName: "", city: "" })
 
     const [products, setProducts] = useState([])
+
     useEffect(() => {
-        debugger;
+        // debugger;
         let purArr = store.purchases.filter(x => x.customerId === +params.id)
         let prodArr = purArr.map(y => store.products.filter(x => y.productId === x.id)).flat()
         prodArr = new Set(prodArr)
         prodArr = Array.from(prodArr)
-        prodArr = prodArr.map(item => item.name)
+        // prodArr = prodArr.map(item => item.name)
         setProducts(prodArr)
 
     })
@@ -64,7 +65,7 @@ function EditCustomerPage() {
             region 2:
             <ul>
                 {
-                    products.map(item => { return <li>{item}</li> })
+                    products.map(item => { return <li><Link to={'/editProduct/' + item.id}> {item.name} </Link> </li> })
                 }
             </ul>
 

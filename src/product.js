@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ProductComp(props) {
 
@@ -28,25 +28,25 @@ function ProductComp(props) {
         cusIdArr = new Set(cusIdArr)
         cusIdArr = Array.from(cusIdArr)
 
-        let temp = []
+        let tempArr = []
 
         for (let i = 0; i < cusIdArr.length; i++) {
-            temp.push(store.customers.filter(x => x.id == cusIdArr[i]))
+            tempArr.push(store.customers.filter(x => x.id === cusIdArr[i]))
         }
 
-        for (let i = 0; i < temp.length; i++) {
-            temp[i][0] = {
-                ...temp[i][0],
-                date: purArr.filter(x => x.customerId === temp[i][0].id).map(p => p.date)
+        for (let i = 0; i < tempArr.length; i++) {
+            tempArr[i][0] = {
+                ...tempArr[i][0],
+                date: purArr.filter(x => x.customerId === tempArr[i][0].id).map(p => p.date)
             }
-            temp[i][0].date = new Set(temp[i][0].date)
-            temp[i][0].date = Array.from(temp[i][0].date)
+            tempArr[i][0].date = new Set(tempArr[i][0].date)
+            tempArr[i][0].date = Array.from(tempArr[i][0].date)
         }
-        temp = temp.flat()
+        tempArr = tempArr.flat()
 
 
-        setCustomer([...customer, temp].flat())
-    }, [])
+        setCustomer([ tempArr].flat())
+    })
 
     const addPurchas = (e, item) => {
         setSaveProd(!saveProd)
