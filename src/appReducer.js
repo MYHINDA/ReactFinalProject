@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 const initalValue = {
     products: [
-        { id: uuidv4(), name: "PC", price: 100, quantity: 10 },
-        { id: uuidv4(), name: "TV", price: 200, quantity: 5 },
+        { id: 2222, name: "PC", price: 100, quantity: 10 },
+        { id: 1111, name: "TV", price: 200, quantity: 5 },
         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
     ],
     customers: [
@@ -15,7 +15,8 @@ const initalValue = {
     purchases: [
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
-        { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" }
+        { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" },
+        { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" }
     ]
 }
 
@@ -28,6 +29,8 @@ function AppReducer(state = initalValue, action) {
         case "ADD_CUSTOMER":
             return { ...state, customers: [...state.customers, action.payload] };
         case "ADD_PURCHASES":
+            let index = state.products.findIndex(item => item.id === parseInt(action.payload.productId))
+            state.products[index].quantity -= 1;
             return {
                 ...state, purchases: [...state.purchases, {
                     id: uuidv4(),
