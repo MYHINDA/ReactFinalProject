@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import CustomerComp from "./customer";
 
 
@@ -11,15 +12,11 @@ function CustomersPage() {
         <h2>customers Page</h2>
         <div style={{ border: "3px solid red", float: "left", height: "300px", padding:"5px" }}>
             <h4>Region 1</h4>
-            <table style={{border:"1px solid black"}}>
+            <table border={"1px"} >
                 {
                     store.customers.map(item => {
                         return <body key={item.id}>
-                            <tr>
-                                
-                                <td> <CustomerComp props={item} /> </td>
-                                
-                            </tr>
+                                 <CustomerComp props={item} />                                
                         </body>
                     })
                 }
@@ -30,10 +27,11 @@ function CustomersPage() {
 
         <div style={{ border: "3px solid green", float: "right", width: "300px" }}>
             <h4>Region 2</h4>
-            {/* {
-                store.products.map(item =>
-                    <ProductComp props={item} key={item.id} />
-                )} */}
+            {
+                store.customers.map(customer =>{
+                    {customer.firstName}  {customer.lastName}
+                    }
+                )}
         </div>
     </div>
 }
