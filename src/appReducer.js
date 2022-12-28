@@ -16,13 +16,14 @@ const initalValue = {
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
         { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" },
-        { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" }
+        { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" },
+        { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" }
     ]
 }
 
 function AppReducer(state = initalValue, action) {
     
-    debugger;
+    // debugger;
     switch (action.type) {
         case "ADD_PRODUCT":
             return { ...state, products:[...state.products,action.payload] };

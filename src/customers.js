@@ -9,7 +9,7 @@ function CustomersPage() {
 
     return <div>
         <h2>customers Page</h2>
-        <div style={{ border: "3px solid red", float: "left", height: "300px", width: "300px" }}>
+        <div style={{ border: "3px solid red", float: "left", height: "300px", padding:"5px" }}>
             <h4>Region 1</h4>
             <table style={{border:"1px solid black"}}>
                 {
