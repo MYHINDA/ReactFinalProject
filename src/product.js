@@ -63,7 +63,7 @@ function ProductComp(props) {
     return <div style={{ border: "2px solid black", margin: "5px" }}>
 
         <h2>Product</h2>
-        Name:<Link to={"/editproduct/" + props.props.id}> {props.props.name}</Link> <br />
+        Name:<Link to={"/editproduct/" + props.props.id}> {props.props.name}</Link> <br/>
 
         price: {props.props.price}<br />
         Quantity: {props.props.quantity}<br /><br />
@@ -73,7 +73,7 @@ function ProductComp(props) {
             {
                 customer.map(item => {
                     return <div key={item.id}>
-                        <Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> <br />
+                        <Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> 
 
                         <ul>
                             City: <li>{item.city}</li>
@@ -84,7 +84,7 @@ function ProductComp(props) {
                             }
                             </ul>
                         </ul>
-                        <Button variant="contained" onClick={() => setComboProd(true)}>ADD</Button>
+                        <Button variant="contained" onClick={() => setComboProd(true)}>ADD</Button><br/>
                         {/* <input type={"button"} value="ADD" onClick={() => setComboProd(true)} /> */}
 
                         {/* https://mui.com/material-ui/react-select/ */}

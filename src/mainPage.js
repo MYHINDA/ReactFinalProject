@@ -4,6 +4,7 @@ import EditProductPage from "./editProduct";
 import EditCustomerPage from "./editCustomer";
 import ProductsPage from "./products";
 import Purchases from "./purchases";
+import PurchasByCustomerPage from "./purchasByCustomer";
 
 function Main() {
 
@@ -31,6 +32,7 @@ function Main() {
             <Route path="/editproduct/:id" element={<EditProductPage />} />
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/editcustomer/:id" element={<EditCustomerPage />} />
+            <Route path="/purchasByCustomer/:id" element={<PurchasByCustomerPage />} />
             <Route path="/purchases" element={<Purchases />} />
         </Routes>
     </div>
