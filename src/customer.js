@@ -27,7 +27,7 @@ function CustomerComp(props) {
             data.push(row)
         }
         setRows(...rows, data)
-    }, [])
+    },[])
 
 
     return <div>

@@ -26,8 +26,6 @@ function PurchasByCustomerPage(props) {
         setSaveProd(false)
     }
 
-    
-
     return <div>
         {
             <select name="products" value="select" onChange={(e) => addPurchas(e.target.value)}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CustomerComp from "./customer";
 import PurchasByCustomerPage from "./purchasByCustomer";
@@ -10,10 +10,15 @@ function CustomersPage() {
 
     const [combo, setCombo] = useState(false)
 
+    const [table, setTable] = useState(false)
+
     const purchasPage = (customer) => {
         setCombo(true)
         
     }
+    useEffect(() => {
+        setTable(true)
+    })
 
  
     
@@ -21,15 +26,17 @@ function CustomersPage() {
         <h2>customers Page</h2>
         <div style={{ border: "3px solid red", float: "left", height: "300px", padding:"5px" }}>
             <h4>Region 1</h4>
-            <table border={"1px"} >
-                {
-                    store.customers.map(item => {
-                        return <body key={item.id}>
-                                 <CustomerComp props={item} />                                
-                        </body>
-                    })
-                }
-            </table>
+            {
+                table && <table border={"1px"} >
+                    {
+                        store.customers.map(item => {
+                            return <body key={item.id}>
+                                <CustomerComp props={item} />
+                            </body>
+                        })
+                    }
+                </table>
+            }
 
 
         </div>
