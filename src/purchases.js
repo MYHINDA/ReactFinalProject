@@ -6,26 +6,63 @@ import CustomerComp from "./customer";
 
 function PurchasesPage() {
 
-    // const params = useParams();
     const store = useSelector(state => state)
 
-    const [data, setData] = useState({ product: store.products, customer: store.customers, date: "" })
+    const [data, setData] = useState({ products: store.products, customer: store.customers, dates: [] })
 
     const [showTable, setShowTable] = useState(false)
-    
+
+    const [showSearchTable, setShowSearchTable] = useState(false)
+
     useEffect(() => {
+
+
         setShowTable(true)
-    })
-    
+
+        setData({ ...data, dates: Array.from(new Set(store.purchases.map(p => p.date).flat())) })
+
+
+
+    }, [])
+    const comboCustomer = (val) => {
+
+        let dates = []
+        debugger;
+        let fullName = val.split(" ")
+        let findCustomer = store.customers.find(x => x.firstName === fullName[0] && x.lastName === fullName[1])
+        let findPurchases = store.purchases.filter(x => x.customerId === +findCustomer.id)
+
+        let products = Array.from(new Set(findPurchases.map(y => store.products.find(x => y.productId === +x.id)).flat()))
+
+        for (let i = 0; i < products.length; i++) {
+            dates.push(findPurchases.filter(x => x.productId === products[i].id).map(p => p.date))
+        }
+        setData({ ...data, dates, products: products, customer: findCustomer })
+    }
+    const comboProduct = (value) => {
+        setData({ ...data, products: [value] })
+
+        let findProduct = store.products.find(x => x.name === value)
+        let dates = store.purchases.filter(x => x.customerId === data.customer.id && x.productId === findProduct.id).map(x => x.date)
+
+        setData({ ...data, dates })
+
+    }
+
     const search = () => {
-        // console.log(data)
+
+        debugger;
+
+        setShowTable(false)
+
+        setShowSearchTable(true)
     }
 
     return <div>
         <h2>Purchases Page</h2>
 
-        
-        <select name="customers" value="select" onChange={(e) => setData({...data, customer:e.target.value})}>
+
+        <select name="customers" value="select" onChange={(e) => comboCustomer(e.target.value)}>
             <option>Choose customer</option>
             {
                 store.customers.map(item =>
@@ -34,22 +71,31 @@ function PurchasesPage() {
             }
         </select>
         <br /><br />
-        <select name="products" value="select" onChange={(e) => setData({ ...data, product: e.target.value })}>
+        <select name="products" value="select" onChange={(e) => comboProduct(e.target.value)}>
             <option>Choose item</option>
             {
-                store.purchases.filter() .map(item =>
+                data.products.map(item =>
                     <option>{item.name}</option>
                 )}
         </select>
         <br /><br />
-        Date: <input type={"date"} onChange={e=>setData({...data, date:e.target.value}) } /><br /><br />
-        <input type={"button"} value="SEARCH" onClick={search}/>
-        
+        <select name="dates" value="select" onChange={(e) => setData({ ...data, dates: [e.target.value] })}>
+            <option>Choose date</option>
+            {
+                data.dates.map(date =>
+                    <option>{date}</option>
+                )}
+        </select>
+        <br /><br />
+
+
+        <input type={"button"} value="SEARCH" onClick={search} />
+
 
         {showTable &&
             <table border={"1px"} >
                 {
-                    data.customer.map(item => {
+                    store.customers.map(item => {
                         return <body key={item.id}>
                             <CustomerComp props={item} />
                         </body>
@@ -57,9 +103,38 @@ function PurchasesPage() {
                 }
             </table>
         }
-
         {
-            store.purchases.filter    
+            showSearchTable &&
+            <table border={"1px"}>{
+
+                < tr >
+                    <td>{data.customer.firstName} {data.customer.lastName} </td>
+                    {
+                        data.products.length === 1 && <td>{data.products[0]}</td>
+                        }
+                        
+                    {
+                        data.products.length > 1 &&
+                        <td>{
+                            data.products.map(item => {
+                                return <tr>{item.name}</tr>
+                            })
+                        }</td>
+                    }
+
+
+
+
+                    <td>{
+                        data.dates.map(item => {
+                            return <tr>{item}</tr>
+                        })
+                    }</td>
+
+                </tr>
+            }
+
+            </table>
         }
     </div>
 }
