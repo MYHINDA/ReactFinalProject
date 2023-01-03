@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -25,6 +25,7 @@ function PurchasByCustomerPage(props) {
         dispatch({ type: "ADD_PURCHASES", payload: purchas })
         setSaveProd(false)
     }
+
 
     return <div>
         {

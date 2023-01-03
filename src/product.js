@@ -46,7 +46,7 @@ function ProductComp(props) {
 
 
         setCustomer([ tempArr].flat())
-    },[])
+    })
 
     const addPurchas = (e, item) => {
         setSaveProd(!saveProd)
