@@ -10,6 +10,8 @@ function CustomersPage() {
 
     const [customers, setCustomers] = useState([])
 
+    const [combo, setCombo] = useState(false)
+
     const purchasPage = (id) => {
 
         debugger
@@ -19,6 +21,7 @@ function CustomersPage() {
         array[index].showCombo = true
 
         setCustomers(array)
+        setCombo(!combo)
     }
 
     useEffect(() => {
@@ -28,6 +31,7 @@ function CustomersPage() {
             customer.push({ ...item, showCombo: false })
         })
         setCustomers([...customers, customer].flat())
+        
     },[])
   
 
