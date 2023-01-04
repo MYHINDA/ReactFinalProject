@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -8,7 +8,7 @@ function PurchasByCustomerPage(props) {
     const store = useSelector(state => state)
 
     const dispatch = useDispatch()
-    
+
     const [saveProd, setSaveProd] = useState(false)
 
     var timeNow = new Date();
@@ -22,8 +22,11 @@ function PurchasByCustomerPage(props) {
     }
 
     const save = () => {
+
         dispatch({ type: "ADD_PURCHASES", payload: purchas })
         setSaveProd(false)
+        debugger;
+        props.props.showCombo = false
     }
 
 
@@ -33,10 +36,10 @@ function PurchasByCustomerPage(props) {
                 <option>Choose your item</option>
                 {
                     store.products.map(item =>
-                    <option>{item.name}</option>
-                )}
+                        <option>{item.name}</option>
+                    )}
             </select>
-            
+
         }
         {
             saveProd && <Button variant="contained" onClick={save}>save</Button>
