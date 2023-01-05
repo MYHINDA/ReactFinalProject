@@ -63,12 +63,12 @@ function ProductComp(props) {
         setPurchas({ ...purchas, productId: store.products.find(x => x.name === e).id, customerId: item.id })
     }
     const save = (item) => {
+
         dispatch({ type: "ADD_PURCHASES", payload: purchas })
-        
         setSaveProd(false)
         setComboProd(false)
 
-        item.showCombo = false;
+        item.showCombo = false
     }
 
     const showCustomerCombo = (item) => {

@@ -12,15 +12,9 @@ function CustomersPage() {
 
     const [combo, setCombo] = useState(false)
 
-    const purchasPage = (id) => {
+    const purchasPage = (customer) => {
 
-        debugger
-        let array = customers;
-        let index = array.findIndex(x => x.id === id)
-
-        array[index].showCombo = true
-
-        setCustomers(array)
+        customer.showCombo = true
         setCombo(!combo)
     }
 
@@ -60,7 +54,7 @@ function CustomersPage() {
                 customers.map(customer => {
                     return <div>
                         <h3>{customer.firstName} {customer.lastName}</h3>
-                        <input type={"button"} value="ADD" onClick={() => purchasPage(customer.id)} /><br /><br />
+                        <input type={"button"} value="ADD" onClick={() => purchasPage(customer)} /><br /><br />
 
                         {
                             customer.showCombo && <PurchasByCustomerPage props={customer} />
