@@ -9,7 +9,7 @@ function ProductComp(props) {
 
     const dispatch = useDispatch()
 
-    const [customer, setCustomer] = useState([])
+    const [customers, setCustomers] = useState([])
 
     const [comboProd, setComboProd] = useState(false)
 
@@ -20,6 +20,7 @@ function ProductComp(props) {
 
     const [purchas, setPurchas] = useState({ customerId: 0, productId: 0, date: israeliDate })
 
+   
     useEffect(() => {
 
 
@@ -30,32 +31,50 @@ function ProductComp(props) {
 
         let tempArr = []
 
+        let items =[]
+
+
         for (let i = 0; i < cusIdArr.length; i++) {
-            tempArr.push(store.customers.filter(x => x.id === cusIdArr[i]))
+            items.push(store.customers.filter(x => x.id === cusIdArr[i]))
         }
+        items = items.flat()
+
+        items.map(item=>{
+            tempArr.push({...item, showCombo:false})
+        })
 
         for (let i = 0; i < tempArr.length; i++) {
-            tempArr[i][0] = {
-                ...tempArr[i][0],
-                date: purArr.filter(x => x.customerId === tempArr[i][0].id).map(p => p.date)
+            tempArr[i] = {
+                ...tempArr[i],
+                date: purArr.filter(x => x.customerId === tempArr[i].id).map(p => p.date)
             }
-            tempArr[i][0].date = new Set(tempArr[i][0].date)
-            tempArr[i][0].date = Array.from(tempArr[i][0].date)
+            tempArr[i].date = new Set(tempArr[i].date)
+            tempArr[i].date = Array.from(tempArr[i].date)
         }
         tempArr = tempArr.flat()
 
 
-        setCustomer([ tempArr].flat())
-    })
+        setCustomers([tempArr].flat())
+       
+    },[])
 
     const addPurchas = (e, item) => {
         setSaveProd(!saveProd)
         setPurchas({ ...purchas, productId: store.products.find(x => x.name === e).id, customerId: item.id })
     }
-    const save = () => {
+    const save = (item) => {
         dispatch({ type: "ADD_PURCHASES", payload: purchas })
+        
         setSaveProd(false)
         setComboProd(false)
+
+        item.showCombo = false;
+    }
+
+    const showCustomerCombo = (item) => {
+        item.showCombo = true
+        setComboProd(!comboProd)
+
     }
 
 
@@ -71,7 +90,7 @@ function ProductComp(props) {
 
         < div >
             {
-                customer.map(item => {
+                customers.map(item => {
                     return <div key={item.id}>
                         <Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> 
 
@@ -84,23 +103,21 @@ function ProductComp(props) {
                             }
                             </ul>
                         </ul>
-                        <Button variant="contained" onClick={() => setComboProd(true)}>ADD</Button><br/>
-                        {/* <input type={"button"} value="ADD" onClick={() => setComboProd(true)} /> */}
-
-                        {/* https://mui.com/material-ui/react-select/ */}
+                        <Button variant="contained" onClick={() => showCustomerCombo(item)}>ADD</Button><br/>
+                        
                         {
-                            comboProd &&
+                            item.showCombo &&
                             <select name="products" value="select" onChange={(e) => addPurchas(e.target.value, item)}>
                                 <option>Choose your item</option>
-                                {store.products.map(item =>
+                                    {
+                                        store.products.map(item =>
                                     <option>{item.name}</option>
                                 )}
                             </select>
                         }
                         {
                             saveProd &&
-                            // <input type={"button"} value="save" onClick={save} />
-                            <Button variant="contained" onClick={save}>save</Button>
+                            <input type={"button"} value="save" onClick={()=>save(item)} />
                         }
                     </div>
                 })

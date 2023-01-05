@@ -25,7 +25,7 @@ function PurchasByCustomerPage(props) {
 
         dispatch({ type: "ADD_PURCHASES", payload: purchas })
         setSaveProd(false)
-        debugger;
+        // debugger;
         props.props.showCombo = false
     }
 
