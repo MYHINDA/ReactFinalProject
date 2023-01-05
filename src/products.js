@@ -8,7 +8,7 @@ function ProductsPage() {
 
     return <div>
         <h2>Product Page</h2>
-        <div style={{border:"3px solid red", float:"left", height:"300px", width:"300px"}}>
+        <div style={{border:"3px solid red", float:"left"}}>
             <h4>Region 1</h4>
             {store.purchases.length}
 
