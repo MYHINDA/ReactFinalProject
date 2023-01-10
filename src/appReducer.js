@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'
-import initalValue from './initalValue';
+
+
 
 // const initalValue = {
 //     products: [
@@ -22,13 +22,16 @@ import initalValue from './initalValue';
 //         { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" }
 //     ]
 // }
-<initalValue/>
-function AppReducer(state = initalValue, action) {
+
+
+function AppReducer(state = {} , action) {
+    // debugger;
     
-    debugger;
     switch (action.type) {
+        case "LOAD_DATA":
+            return { state:action.payload };
         case "ADD_PRODUCT":
-            return { ...state, products:[...state.products,action.payload] };
+            return { ...state, products: [...state.products, action.payload] };
         case "ADD_CUSTOMER":
             return { ...state, customers: [...state.customers, action.payload] };
         case "ADD_PURCHASES":
@@ -48,15 +51,15 @@ function AppReducer(state = initalValue, action) {
             if (prod_index1 >= 0) {
                 if (action.payload.name !== "")
                     prod_arr1[prod_index1].name = action.payload.name
-                
+
                 if (action.payload.price !== 0)
                     prod_arr1[prod_index1].price = action.payload.price
-                
+
                 if (action.payload.quantity >= 0)
                     prod_arr1[prod_index1].quantity = action.payload.quantity
-                
+
             }
-                
+
             return { ...state, products: prod_arr1 }
         case "EDIT_CUSTOMER":
             let cust_arr1 = state.customers;
@@ -65,7 +68,7 @@ function AppReducer(state = initalValue, action) {
 
             if (cust_index1 >= 0) {
                 if (action.payload.firstName !== "")
-                    cust_arr1[cust_index1].firstName = action.payload.firstName 
+                    cust_arr1[cust_index1].firstName = action.payload.firstName
 
                 if (action.payload.lastName !== "")
                     cust_arr1[cust_index1].lastName = action.payload.lastName
@@ -75,14 +78,14 @@ function AppReducer(state = initalValue, action) {
 
             }
             return { ...state, customers: cust_arr1 }
-        
+
         case "EDIT_PURCHASES":
             let pur_arr1 = state.purchases;
             let pur_index1 = pur_arr1.findIndex(x => x.id === action.payload.id)
             if (pur_index1 >= 0)
                 pur_arr1[pur_index1] = action.payload
             return { ...state, purchases: pur_arr1 }
-            
+
         case "DELETE_PRODUCT":
             let arr = []
             let prod_arr = state.products;
@@ -92,7 +95,7 @@ function AppReducer(state = initalValue, action) {
                 prod_arr.splice(prod_index, 1)
                 arr = purchas_arr.filter(x => x.productId !== parseInt(action.payload.id))
             }
-            return { ...state, products: prod_arr, purchases:arr };
+            return { ...state, products: prod_arr, purchases: arr };
 
         case "DELETE_CUSTOMER":
             let arr2 = []
@@ -101,19 +104,19 @@ function AppReducer(state = initalValue, action) {
             let cust_index = cust_arr.findIndex(x => x.id === parseInt(action.payload.id))
             if (cust_index >= 0) {
                 cust_arr.splice(cust_index, 1)
-                arr2 = purchas_arr2.filter(x=>x.customerId !== parseInt(action.payload.id))
+                arr2 = purchas_arr2.filter(x => x.customerId !== parseInt(action.payload.id))
             }
-                
-            
-            return { ...state, customers: cust_arr, purchases:arr2 };
-        
+
+
+            return { ...state, customers: cust_arr, purchases: arr2 };
+
         case "DELETE_PURCHASES":
             let pur_arr = state.customers;
             let pur_index = pur_arr.findIndex(x => x.id === action.payload.id)
             if (pur_index >= 0)
                 pur_arr.splice(pur_index, 1)
             return { ...state, customers: pur_arr };
-        
+
         default:
             return state;
     }
