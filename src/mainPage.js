@@ -5,7 +5,6 @@ import EditCustomerPage from "./editCustomer";
 import ProductsPage from "./products";
 import Purchases from "./purchases";
 import PurchasByCustomerPage from "./purchasByCustomer";
-<<<<<<< HEAD
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import firebase from "./firebaseApp";
@@ -97,27 +96,6 @@ function Main() {
 
             <div style={{ border: "2px solid black", margin: "5px", backgroundColor: "aqua", height: "30px", width: "100px"}}>
                 <Link to="/purchases">purchases</Link>
-=======
-
-function Main() {
-
-    return <div>
-
-        <Link to="/"><h1>Main Page</h1></Link>
-
-        <div style={{width:"25%", float:"right"}}>
-
-            <div style={{ border: "2px solid black", margin: "5px", backgroundColor: "aqua", height: "30px", width: "300px", float:"left" }}>
-                <Link to="/products">products</Link><br/>
-            </div>
-
-            <div style={{ border: "2px solid black", margin: "5px", backgroundColor: "pink", height: "30px", width: "300px", float: "left" }}>
-                <Link to="/customers">customers</Link><br/>
-            </div>
-
-            <div style={{ border: "2px solid black", margin: "5px", backgroundColor: "aqua", height: "30px", width: "300px", float: "left" }}>
-                <Link to="/purchases">purchases</Link><br/>
->>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
             </div>
         </div>
 

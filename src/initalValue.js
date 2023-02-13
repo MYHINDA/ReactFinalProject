@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import firebase from "./firebaseApp";
 
@@ -70,8 +69,8 @@ function InitalValueComp() {
     })
 }
 
-export default InitalValueComp;
-=======
+// export default InitalValueComp;
+
 import { useState } from "react";
 import firebase from "./firebaseApp";
 
@@ -141,4 +140,3 @@ async function InitalValueComp() {
 }
 
 export default InitalValueComp.initalValue;
->>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
