@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { v4 as uuidv4 } from 'uuid'
 
 
@@ -32,6 +33,39 @@ function AppReducer(state = initalValue , action) {
             return { state:action.payload };
         case "ADD_PRODUCT":
             return { ...state, products: [...state.products, action.payload] };
+=======
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid'
+import initalValue from './initalValue';
+
+// const initalValue = {
+//     products: [
+//         { id: 2222, name: "PC", price: 100, quantity: 10 },
+//         { id: 1111, name: "TV", price: 200, quantity: 5 },
+//         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
+//     ],
+//     customers: [
+//         { id: uuidv4(), firstName: "Avi",    lastName: "Levi", city: "TLV" },
+//         { id: uuidv4(), firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
+//         { id: 1234, firstName: "Israela", lastName: "Israeli", city: "Jerusalem" },
+//         { id: 4321, firstName: "Aviva", lastName: "Cohen", city: "Tzfat" }
+//     ],
+//     purchases: [
+//         { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
+//         { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
+//         { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" },
+//         { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" },
+//         { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" }
+//     ]
+// }
+<initalValue/>
+function AppReducer(state = initalValue, action) {
+    
+    debugger;
+    switch (action.type) {
+        case "ADD_PRODUCT":
+            return { ...state, products:[...state.products,action.payload] };
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         case "ADD_CUSTOMER":
             return { ...state, customers: [...state.customers, action.payload] };
         case "ADD_PURCHASES":
@@ -51,6 +85,7 @@ function AppReducer(state = initalValue , action) {
             if (prod_index1 >= 0) {
                 if (action.payload.name !== "")
                     prod_arr1[prod_index1].name = action.payload.name
+<<<<<<< HEAD
 
                 if (action.payload.price !== 0)
                     prod_arr1[prod_index1].price = action.payload.price
@@ -60,6 +95,17 @@ function AppReducer(state = initalValue , action) {
 
             }
 
+=======
+                
+                if (action.payload.price !== 0)
+                    prod_arr1[prod_index1].price = action.payload.price
+                
+                if (action.payload.quantity >= 0)
+                    prod_arr1[prod_index1].quantity = action.payload.quantity
+                
+            }
+                
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
             return { ...state, products: prod_arr1 }
         case "EDIT_CUSTOMER":
             let cust_arr1 = state.customers;
@@ -68,7 +114,11 @@ function AppReducer(state = initalValue , action) {
 
             if (cust_index1 >= 0) {
                 if (action.payload.firstName !== "")
+<<<<<<< HEAD
                     cust_arr1[cust_index1].firstName = action.payload.firstName
+=======
+                    cust_arr1[cust_index1].firstName = action.payload.firstName 
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
 
                 if (action.payload.lastName !== "")
                     cust_arr1[cust_index1].lastName = action.payload.lastName
@@ -78,14 +128,22 @@ function AppReducer(state = initalValue , action) {
 
             }
             return { ...state, customers: cust_arr1 }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         case "EDIT_PURCHASES":
             let pur_arr1 = state.purchases;
             let pur_index1 = pur_arr1.findIndex(x => x.id === action.payload.id)
             if (pur_index1 >= 0)
                 pur_arr1[pur_index1] = action.payload
             return { ...state, purchases: pur_arr1 }
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         case "DELETE_PRODUCT":
             let arr = []
             let prod_arr = state.products;
@@ -95,7 +153,11 @@ function AppReducer(state = initalValue , action) {
                 prod_arr.splice(prod_index, 1)
                 arr = purchas_arr.filter(x => x.productId !== parseInt(action.payload.id))
             }
+<<<<<<< HEAD
             return { ...state, products: prod_arr, purchases: arr };
+=======
+            return { ...state, products: prod_arr, purchases:arr };
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
 
         case "DELETE_CUSTOMER":
             let arr2 = []
@@ -104,19 +166,32 @@ function AppReducer(state = initalValue , action) {
             let cust_index = cust_arr.findIndex(x => x.id === parseInt(action.payload.id))
             if (cust_index >= 0) {
                 cust_arr.splice(cust_index, 1)
+<<<<<<< HEAD
                 arr2 = purchas_arr2.filter(x => x.customerId !== parseInt(action.payload.id))
             }
 
 
             return { ...state, customers: cust_arr, purchases: arr2 };
 
+=======
+                arr2 = purchas_arr2.filter(x=>x.customerId !== parseInt(action.payload.id))
+            }
+                
+            
+            return { ...state, customers: cust_arr, purchases:arr2 };
+        
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         case "DELETE_PURCHASES":
             let pur_arr = state.customers;
             let pur_index = pur_arr.findIndex(x => x.id === action.payload.id)
             if (pur_index >= 0)
                 pur_arr.splice(pur_index, 1)
             return { ...state, customers: pur_arr };
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         default:
             return state;
     }
