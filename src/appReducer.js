@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { v4 as uuidv4 } from 'uuid'
 
 
@@ -33,39 +32,6 @@ function AppReducer(state = initalValue , action) {
             return { state:action.payload };
         case "ADD_PRODUCT":
             return { ...state, products: [...state.products, action.payload] };
-=======
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid'
-import initalValue from './initalValue';
-
-// const initalValue = {
-//     products: [
-//         { id: 2222, name: "PC", price: 100, quantity: 10 },
-//         { id: 1111, name: "TV", price: 200, quantity: 5 },
-//         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
-//     ],
-//     customers: [
-//         { id: uuidv4(), firstName: "Avi",    lastName: "Levi", city: "TLV" },
-//         { id: uuidv4(), firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
-//         { id: 1234, firstName: "Israela", lastName: "Israeli", city: "Jerusalem" },
-//         { id: 4321, firstName: "Aviva", lastName: "Cohen", city: "Tzfat" }
-//     ],
-//     purchases: [
-//         { id: uuidv4(), customerId: 1234, productId: 5678, date: "14/12/2023" },
-//         { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
-//         { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" },
-//         { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" },
-//         { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" }
-//     ]
-// }
-<initalValue/>
-function AppReducer(state = initalValue, action) {
-    
-    debugger;
-    switch (action.type) {
-        case "ADD_PRODUCT":
-            return { ...state, products:[...state.products,action.payload] };
->>>>>>> 835fba4b5873ebd5e01db4bb9dde4a16aa5634fc
         case "ADD_CUSTOMER":
             return { ...state, customers: [...state.customers, action.payload] };
         case "ADD_PURCHASES":
