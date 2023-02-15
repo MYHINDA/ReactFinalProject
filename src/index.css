@@ -12,7 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.add_customer{
+.product_details{
+  font-family: 'Baskerville Old Face';
+  font-size: 30px;
+
+}
+.total_purchases{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 40px;
+}
+
+.l_button{
   background-color: #6e66db;
   border: none;
   color: white;
@@ -39,7 +49,7 @@ code {
     border-radius: 10px;
 }
 
-.select_product{
+.select_item{
   background-color: white;
   border: #6e66db;
   border-radius: 10px;

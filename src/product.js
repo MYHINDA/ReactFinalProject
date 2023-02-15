@@ -79,35 +79,39 @@ function ProductComp(props) {
 
 
 
-    return <div style={{ border: "2px solid black", margin: "5px" }}>
+    return <div class="card" style={{ border: "2px solid black", margin: "5px" }}>
 
-        <h2>Product</h2>
-        Name:<Link to={"/editproduct/" + props.props.id}> {props.props.name}</Link> <br/>
+        <br />
+        <h2 class="total_purchases">product card</h2>
 
+        <hindy class="product_details">
+        Name:<Link to={"/editproduct/" + props.props.id}> {props.props.name}</Link> <br />
         price: {props.props.price}<br />
         Quantity: {props.props.quantity}<br /><br />
-
+        </hindy>
 
         < div >
             {
                 customers.map(item => {
                     return <div key={item.id}>
-                        <Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> 
+                        <Link to={"/editcustomer/" + item.id}><h3 class="total_purchases" style={{fontSize:"30px"}}>{item.firstName} {item.lastName}</h3> </Link> 
 
-                        <ul>
-                            City: <li>{item.city}</li>
-                            Date: <ul>{
+                        <hodaya class="product_details">
+                            City: {item.city}
+                            <br/><br/>
+                            Date: {
                                 item.date.map(d => {
                                     return <li>{d}</li>
                                 })
                             }
-                            </ul>
-                        </ul>
-                        <Button variant="contained" onClick={() => showCustomerCombo(item)}>ADD</Button><br/>
-                        
+                            
+                        </hodaya>
+                        <br/>
+                        <Button class="l_button" onClick={() => showCustomerCombo(item)}>ADD</Button><br/>
+                        <br/>
                         {
                             item.showCombo &&
-                            <select name="products" value="select" onChange={(e) => addPurchas(e.target.value, item)}>
+                            <select class="select_item" name="products" value="select" onChange={(e) => addPurchas(e.target.value, item)}>
                                 <option>Choose your item</option>
                                     {
                                         store.products.map(item =>
@@ -117,7 +121,7 @@ function ProductComp(props) {
                         }
                         {
                             saveProd &&
-                            <input type={"button"} value="save" onClick={()=>save(item)} />
+                            <input type={"button"} class="small_button" value="save" onClick={()=>save(item)} />
                         }
                     </div>
                 })

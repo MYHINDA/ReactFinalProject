@@ -40,8 +40,8 @@ function PurchasByCustomerPage(props) {
     return <div>
         {
             
-            <select name="products" class="select_product" value="select" onChange={(e) => addPurchas(e.target.value)}>
-                <option class="select_product">Choose your item</option>
+            <select name="products" class="select_item" value="select" onChange={(e) => addPurchas(e.target.value)}>
+                <option class="select_item">Choose your item</option>
                 {
                     store.products.map(item =>
                         <option>{item.name}</option>

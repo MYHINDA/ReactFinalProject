@@ -63,7 +63,7 @@ function PurchasesPage() {
     return <div>
         <h2>Purchases Page</h2>
 
-        <select name="customers" value="select" onChange={(e) => comboCustomer(e.target.value)}>
+        <select class="select_item" name="customers" value="select" onChange={(e) => comboCustomer(e.target.value)}>
             <option>Choose customer</option>
             {
                 store.customers.map(item =>
@@ -72,7 +72,7 @@ function PurchasesPage() {
             }
         </select>
         <br /><br />
-        <select name="products" value="select" onChange={(e) => comboProduct(e.target.value)}>
+        <select class="select_item" name="products" value="select" onChange={(e) => comboProduct(e.target.value)}>
             <option>Choose item</option>
             {
                 data.products.map(item =>
@@ -80,7 +80,7 @@ function PurchasesPage() {
                 )}
         </select>
         <br /><br />
-        <select name="dates" value="select" onChange={(e) => setTableData({ ...tableData, dates: [e.target.value] })}>
+        <select class="select_item" name="dates" value="select" onChange={(e) => setTableData({ ...tableData, dates: [e.target.value] })}>
             <option>Choose date</option>
             {
                 data.dates.map(date =>
@@ -90,7 +90,7 @@ function PurchasesPage() {
         <br /><br />
 
 
-        <input type={"button"} value="SEARCH" onClick={search} />
+        <input type={"button"} class="l_button" value="SEARCH" onClick={search} />
 
 
         {

@@ -51,7 +51,7 @@ function CustomersPage() {
                 customers.map(customer => {
                     return <div class="card">
                         <h3>{customer.firstName} {customer.lastName}</h3>
-                        <button  class="add_customer" onClick={() => purchasPage(customer)} >ADD</button><br/><br/>
+                        <button  class="l_button" onClick={() => purchasPage(customer)} >ADD</button><br/><br/>
                         {
                             customer.showCombo && <PurchasByCustomerPage props={customer} />
                         }

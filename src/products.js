@@ -7,15 +7,13 @@ function ProductsPage() {
     const store = useSelector(state => state);
 
     return <div>
-        <h2>Product Page</h2>
-        <div style={{border:"3px solid red", float:"left"}}>
-            <h4>Region 1</h4>
-            {store.purchases.length}
+        <div class="card" style={{ float: "left", width: "30%",marginTop:"3%" ,margin:"10%"}}>
+            <h4 class="total_purchases">Total purchases:</h4>
+            <span class="total_purchases">{store.purchases.length}</span>
 
         </div>
 
-        <div style={{ border: "3px solid green", float: "right", width:"300px"}}>
-            <h4>Region 2</h4>
+        <div style={{ float: "right", width: "45%", margin: "20px" }}>
             {
                 store.products.map(item =>
                     <ProductComp props={item} key={item.id} />
