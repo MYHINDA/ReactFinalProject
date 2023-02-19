@@ -16,9 +16,7 @@ function EditProductPage() {
 
     const [customer, setCustomer] = useState([])
 
-    useEffect(() => {
-        // debugger;
-        
+    useEffect(() => {        
         let purArr = store.purchases.filter(x => x.productId === parseInt(params.id))
         let cusIdArr = purArr.map(x => x.customerId)
         cusIdArr = new Set(cusIdArr)
@@ -42,27 +40,27 @@ function EditProductPage() {
 
     return <div>
 
-        <h2>EditProduct Page</h2>
+        {/* <h2>EditProduct Page</h2> */}
 
-        <div style={{ border: "3px solid yellow", float: "right", width: "300px", height: "300px" }}>
-            <ul>
+        <div class= "card" style={{  float: "left", width: "30%" , margin:"100px", marginTop:"10px"}}>
+            <ul style={{float:"left"}}>
                 {
                     customer.map(item => {
 
-                        return <li><Link to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> <br /></li>
+                        return <li><Link class="details" to={"/editcustomer/" + item.id}><h3>{item.firstName} {item.lastName}</h3> </Link> <br /></li>
                     })
                 }</ul>
         </div>
 
-        <div style={{ border: "3px solid blue", float: "left", width: "300px" }}>
+        <div class="card" style={{ float: "right", width: "45%", margin: "60px", marginTop: "10px" }}>
 
-            <form onSubmit={updateProduct}>
-                Name: <input type="text" onChange={(e) => setProduct({ ...product, name: e.target.value })} /> <br /><br />
-                Price: <input type="text" onChange={(e) => setProduct({ ...product, price: e.target.value })} /> <br /><br />
-                Quantity: <input type="text" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} /> <br /><br />
-                <input type={"submit"} value="Update" name="update" />
+            <form onSubmit={updateProduct} class="details" style={{ margin: "10px" }}>
+                Name: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, name: e.target.value })} /> <br /><br />
+                Price: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, price: e.target.value })} /> <br /><br />
+                Quantity: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, quantity: e.target.value })} /> <br /><br />
+                <input type={"submit"} class="small_button" value="Update" name="update" />
 
-                <input type={"button"} value="delete" onClick={() => dispatch({ type: "DELETE_PRODUCT", payload: product }) && navigate('/products')} />
+                <input type={"button"} value="delete" class="small_button" onClick={() => dispatch({ type: "DELETE_PRODUCT", payload: product }) && navigate('/products')} />
                 <br /><br />
 
             </form>

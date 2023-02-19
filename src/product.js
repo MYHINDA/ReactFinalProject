@@ -84,7 +84,7 @@ function ProductComp(props) {
         <br />
         <h2 class="total_purchases">product card</h2>
 
-        <hindy class="product_details">
+        <hindy class="details">
         Name:<Link to={"/editproduct/" + props.props.id}> {props.props.name}</Link> <br />
         price: {props.props.price}<br />
         Quantity: {props.props.quantity}<br /><br />

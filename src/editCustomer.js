@@ -41,19 +41,19 @@ function EditCustomerPage() {
     }
 
     return <div>
-        <h2>EditCustomerPage </h2>
-        <div style={{ width: "300px", border: "3px solid red", float: "right" }}>
-            region 1:
+        {/* <h2>EditCustomerPage </h2> */}
+        <div class="card" style={{  float: "right", width: "45%" , margin:"20px"}}>
+            {/* region 1: */}
 
-            <form onSubmit={updateCustomer}>
+            <form class="details" onSubmit={updateCustomer} style={{float:"left", margin:"15px"}}>
 
-                First Name: <input type="text" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} /> <br /><br />
-                Last Name: <input type="text" onChange={(e) => setCustomer({ ...customer, lastName: e.target.value })} /> <br /><br />
-                City: <input type="text" onChange={(e) => setCustomer({ ...customer, city: e.target.value })} /> <br /><br />
+                First Name: <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} style={{fontSize:"20px"}} /> <br /><br />
+                Last Name:  <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, lastName:  e.target.value })}  style={{ fontSize: "20px" }} /> <br /><br />
+                City:       <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, city:      e.target.value })}      style={{ fontSize: "20px" }} /> <br /><br />
 
-                <input type={"submit"} value="Update" />
-                {/* <input type={"button"} value="delete" onClick={deleteCustomer} /> */}
-                <Button variant="contained" onClick={deleteCustomer}>Delete</Button>
+                <input class="small_button" type={"submit"} value="Update" />
+
+                <Button class="small_button" onClick={deleteCustomer}>Delete</Button>
                 
                 <br /><br />
 
@@ -61,11 +61,10 @@ function EditCustomerPage() {
 
         </div>
 
-        <div style={{ width: "300px", border: "3px solid orange", float: "left" }}>
-            region 2:
-            <ul>
+        <div class="card" style={{ float: "right", width: "45%", margin:"20px" }}>
+            <ul style={{ float: "left" }}>
                 {
-                    products.map(item => { return <li><Link to={'/editProduct/' + item.id}> {item.name} </Link> </li> })
+                    products.map(item => { return <li><Link class="details"  to={'/editProduct/' + item.id}> {item.name} </Link> </li> })
                 }
             </ul>
 
