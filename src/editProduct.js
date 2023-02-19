@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import {Box, Button, TextField} from "@mui/material"
 
 function EditProductPage() {
 
@@ -53,14 +54,24 @@ function EditProductPage() {
         </div>
 
         <div class="card" style={{ float: "right", width: "45%", margin: "60px", marginTop: "10px" }}>
+           
 
             <form onSubmit={updateProduct} class="details" style={{ margin: "10px" }}>
-                Name: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, name: e.target.value })} /> <br /><br />
-                Price: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, price: e.target.value })} /> <br /><br />
-                Quantity: <input type="text" class="details" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, quantity: e.target.value })} /> <br /><br />
-                <input type={"submit"} class="small_button" value="Update" name="update" />
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField id="outlined-basic" label="Name:" variant="outlined" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, name: e.target.value })} /><br /><br />
+                    <TextField id="outlined-basic" label="Price:" variant="outlined" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, price: e.target.value })} /><br /><br />
+                    <TextField id="outlined-basic" label="Quantity:" variant="outlined" style={{ fontSize: "20px" }} onChange={(e) => setProduct({ ...product, quantity: e.target.value })} /> <br /><br />
+                </Box><br />
+                <input class="small_button" type={"submit"} value="Update" name="update" />
 
-                <input type={"button"} value="delete" class="small_button" onClick={() => dispatch({ type: "DELETE_PRODUCT", payload: product }) && navigate('/products')} />
+                <Button class="small_button" onClick={() => dispatch({ type: "DELETE_PRODUCT", payload: product }) && navigate('/products')}>Delete</Button>
                 <br /><br />
 
             </form>

@@ -47,15 +47,7 @@ function EditCustomerPage() {
 
             <form class="details" onSubmit={updateCustomer} style={{float:"left", margin:"15px"}}>
 
-                {/* <TextField variant="standard" label="First Name: " class="details" type="text" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} style={{fontSize:"20px"}} /> <br /><br />
-                Last Name:  <TextField variant="standard" class="details" type="text" onChange={(e) => setCustomer({ ...customer, lastName:  e.target.value })}  style={{ fontSize: "20px" }} /> <br /><br />
-                City:       <TextField variant="standard" class="details" type="text" onChange={(e) => setCustomer({ ...customer, city:      e.target.value })}      style={{ fontSize: "20px" }} /> <br /><br />
-
-                <input class="small_button" type={"submit"} value="Update" />
-
-                <Button class="small_button" onClick={deleteCustomer}>Delete</Button>
                 
-                <br /><br /> */}
                 <Box
                     component="form"
                     sx={{
