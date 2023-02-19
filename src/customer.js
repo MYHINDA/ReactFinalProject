@@ -30,12 +30,12 @@ function CustomerComp(props) {
     },[])
 
 
-    return <div>
+    return <div class="data">
 
 
-            <tr style={{border:"1px solid black", height: "3px", width: "100%" }} >
-        <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{props.props.firstName}</td>
-        <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
+        <tr  style={{border:"1px solid black", height: "3px", width: "100%" }} >
+            <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{props.props.firstName}</td>
+            <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
                     rows.map(item => {
                         return <tr style={{ borderRight: "1px solid black", borderBottom: "1px solid black", width: "100%" }}>{item.name}
                         <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{

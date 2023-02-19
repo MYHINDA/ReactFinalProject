@@ -17,6 +17,11 @@ code {
   font-size: 30px;
 
 }
+.data{
+  font-family: 'Arial Narrow';
+  font-size: 25px;
+
+}
 .total_purchases{
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 40px;

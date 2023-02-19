@@ -32,7 +32,8 @@ function CustomersPage() {
     return <div>
         <div style={{float: "left", width:"45%"}}>
             {
-                true && <table border={"1px"} style={{width:"100%",padding:"20px", margin:"20px"}}>
+                // true&&
+                <table border={"1px"} style={{width:"100%",padding:"20px", margin:"20px"}}>
                     {
                         store.customers.map(item => {
                             return <body key={item.id}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 
 
 function EditCustomerPage() {
@@ -47,16 +47,32 @@ function EditCustomerPage() {
 
             <form class="details" onSubmit={updateCustomer} style={{float:"left", margin:"15px"}}>
 
-                First Name: <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} style={{fontSize:"20px"}} /> <br /><br />
-                Last Name:  <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, lastName:  e.target.value })}  style={{ fontSize: "20px" }} /> <br /><br />
-                City:       <input class="details" type="text" onChange={(e) => setCustomer({ ...customer, city:      e.target.value })}      style={{ fontSize: "20px" }} /> <br /><br />
+                {/* <TextField variant="standard" label="First Name: " class="details" type="text" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} style={{fontSize:"20px"}} /> <br /><br />
+                Last Name:  <TextField variant="standard" class="details" type="text" onChange={(e) => setCustomer({ ...customer, lastName:  e.target.value })}  style={{ fontSize: "20px" }} /> <br /><br />
+                City:       <TextField variant="standard" class="details" type="text" onChange={(e) => setCustomer({ ...customer, city:      e.target.value })}      style={{ fontSize: "20px" }} /> <br /><br />
 
                 <input class="small_button" type={"submit"} value="Update" />
 
                 <Button class="small_button" onClick={deleteCustomer}>Delete</Button>
                 
-                <br /><br />
+                <br /><br /> */}
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField id="outlined-basic" label="first name" variant="outlined" onChange={(e) => setCustomer({ ...customer, firstName: e.target.value })} style={{ fontSize: "20px" }} /><br/><br/>
+                    <TextField id="outlined-basic" label="last name" variant="outlined" onChange={(e) => setCustomer({ ...customer, lastName: e.target.value })} style={{ fontSize: "20px" }} /><br/><br/>
+                    <TextField id="outlined-basic" label="city" variant="outlined" onChange={(e) => setCustomer({ ...customer, city: e.target.value })} style={{ fontSize: "20px" }} />
+                </Box><br/>
+                <input class="small_button" type={"submit"} value="Update" />
 
+                <Button class="small_button" onClick={deleteCustomer}>Delete</Button>
+
+                <br /><br />
             </form>
 
         </div>
