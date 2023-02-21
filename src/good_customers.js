@@ -2,14 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CustomerComp from "./customer";
 import PurchasByCustomerPage from "./purchasByCustomer";
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
 
 function CustomersPage() {
 
@@ -40,19 +33,18 @@ function CustomersPage() {
         <div style={{float: "left", width:"45%"}}>
             {
                 // true&&
-                
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                       
-                        {
-                            store.customers.map(item => {
-                                return <TableBody key={item.id}>
-                                    <CustomerComp props={item} />
-                                </TableBody>
-                            })}
-                            </Table>
-                </TableContainer>
+                <table border={"1px"} style={{width:"100%",padding:"20px", margin:"20px"}}>
+                    {
+                        store.customers.map(item => {
+                            return <body key={item.id}>
+                                <CustomerComp props={item} />
+                            </body>
+                        })
+                    }
+                </table>
             }
+
+
         </div>
 
         <div style={{ float: "right", width: "45%", margin:"20px" }}>

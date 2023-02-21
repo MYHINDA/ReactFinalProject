@@ -9,8 +9,8 @@ const initalValue = {
         { id: 5678,     name: "CEL", price: 150, quantity: 10 }
     ],
     customers: [
-        { id: uuidv4(), firstName: "Avi",    lastName: "Levi", city: "TLV" },
-        { id: uuidv4(), firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
+        { id: 2468, firstName: "Avi",    lastName: "Levi", city: "TLV" },
+        { id: 8642, firstName: "Israel", lastName: "Israeli", city: "Jerusalem" },
         { id: 1234, firstName: "Israela", lastName: "Israeli", city: "Jerusalem" },
         { id: 4321, firstName: "Aviva", lastName: "Cohen", city: "Tzfat" }
     ],
@@ -19,7 +19,9 @@ const initalValue = {
         { id: uuidv4(), customerId: 1234, productId: 5678, date: "15/12/2023" },
         { id: uuidv4(), customerId: 4321, productId: 5678, date: "15/12/2023" },
         { id: uuidv4(), customerId: 4321, productId: 1111, date: "15/12/2023" },
-        { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" }
+        { id: uuidv4(), customerId: 1234, productId: 2222, date: "27/12/2022" },
+        { id: uuidv4(), customerId: 2468, productId: 2222, date: "19/02/2023" },
+        { id: uuidv4(), customerId: 2468, productId: 5678, date: "19/02/2023" }
     ]
 }
 

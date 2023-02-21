@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import { Table } from "@mui/material";
+
 
 function CustomerComp(props) {
 
@@ -8,7 +12,7 @@ function CustomerComp(props) {
     const [rows, setRows] = useState([])
 
     useEffect(() => {
-        // debugger;
+        debugger;
         let row = { name: "", dates: [] }
         let data = []
 
@@ -31,24 +35,34 @@ function CustomerComp(props) {
 
 
     return <div class="data">
-
-
-        <tr  style={{border:"1px solid black", height: "3px", width: "100%" }} >
-            <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{props.props.firstName}</td>
-            <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
+        {
+            <Table >
+            <TableRow 
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                
+                    <TableCell style={{ border: "1px solid black", width:"40%" }} component="th" scope="row">{props.props.firstName}</TableCell>
+                    <TableCell align="right">
+                        {
                     rows.map(item => {
-                        return <tr style={{ borderRight: "1px solid black", borderBottom: "1px solid black", width: "100%" }}>{item.name}
-                        <td style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
-                    
-                        item.date.map(x => {
-                            return <div>{x}</div>
-                        })
-                    
-                }</td></tr>
+                        return <TableRow style={{ borderRight:"1px solid black", borderBottom:"1px solid black", width: "100%" }}>{item.name}
+                            <TableCell style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
+
+                                item.date.map(x => {
+                                    return <div>{x}</div>
+                                })
+
+                            }</TableCell>
+                        </TableRow>
                     })
-                }</td>
+                    }
+                </TableCell>
+                
+                </TableRow>
+            </Table>
+        }
+
         
-            </tr>
     </div>
 }
 
