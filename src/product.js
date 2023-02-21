@@ -91,6 +91,7 @@ function ProductComp(props) {
         </hindy>
 
         < div >
+      
             {
                 customers.map(item => {
                     return <div key={item.id}>
