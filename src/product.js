@@ -96,7 +96,7 @@ function ProductComp(props) {
                     return <div key={item.id}>
                         <Link to={"/editcustomer/" + item.id}><h3 class="total_purchases" style={{fontSize:"30px"}}>{item.firstName} {item.lastName}</h3> </Link> 
 
-                        <hodaya class="product_details">
+                        <hodaya class="details">
                             City: {item.city}
                             <br/><br/>
                             Date: {

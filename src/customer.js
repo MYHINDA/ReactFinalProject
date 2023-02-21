@@ -36,17 +36,18 @@ function CustomerComp(props) {
 
     return <div class="data">
         {
-            <Table >
+            <Table  >
             <TableRow 
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    
                 >
                 
-                    <TableCell style={{ border: "1px solid black", width:"40%" }} component="th" scope="row">{props.props.firstName}</TableCell>
-                    <TableCell align="right">
+                    <TableCell style={{ border: "1px solid black", width: "100px" }} component="th" scope="row">{props.props.firstName} { props.props.lastName}</TableCell>
+                    <TableCell align="right" style={{ border: "1px solid black" }}>
                         {
                     rows.map(item => {
-                        return <TableRow style={{ borderRight:"1px solid black", borderBottom:"1px solid black", width: "100%" }}>{item.name}
-                            <TableCell style={{ height: "1px", width: "130px", "borderCollapse": "collapse" }}>{
+                        return <TableRow style={{  border:"1px solid black" }}>{item.name}
+                            <TableCell style={{ width: "100%" }} >{
 
                                 item.date.map(x => {
                                     return <div>{x}</div>

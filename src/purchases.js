@@ -60,9 +60,11 @@ function PurchasesPage() {
         setShowSearchTable(true)
     }
 
-    return <div>
-        <h2>Purchases Page</h2>
+    return <div style={{backgroundColor:"beige"}}>
+        <h2>SEARCH PURCHASES</h2>
+        <br/><br/>
 
+        <div style={{float: "left", width:"50%"}}>
         <select class="select_item" name="customers" value="select" onChange={(e) => comboCustomer(e.target.value)}>
             <option>Choose customer</option>
             {
@@ -91,11 +93,12 @@ function PurchasesPage() {
 
 
         <input type={"button"} class="l_button" value="SEARCH" onClick={search} />
+        </div>
 
-
+        <div style={{ float: "right", width: "50%" }}>
         {
             showTable &&
-            <table border={"1px"} >
+            <table style={{ margin:"150px", marginTop:"0px", float:"right"}} >
                 {
                     store.customers.map(item => {
                         return <body key={item.id}>
@@ -137,7 +140,8 @@ function PurchasesPage() {
             }
 
             </table>
-        }
+            }
+            </div>
     </div>
 }
 

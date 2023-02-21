@@ -37,12 +37,12 @@ function CustomersPage() {
   
 
     return <div>
-        <div style={{float: "left", width:"45%"}}>
+        <div style={{float: "left", width:"500px"}}>
             {
                 // true&&
                 
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableContainer component={Paper} style={{margin:"20px"}}>
+                    <Table aria-label="simple table">
                        
                         {
                             store.customers.map(item => {
