@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { Button } from "bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductComp from "./product";
@@ -21,19 +20,24 @@ function ProductsPage() {
         setShowAddProduct(!showAddProduct)
         
 
-        }
+    }
+    
     return <div>
 
         <div class="card" style={{ float: "right", width: "45%", margin: "20px" }}>
             <h2>Add Product</h2>
-            <button class="l_button" onClick={setShowAddProduct(true)}>ADD</button>
-
+            {
+                !showAddProduct && <button class="l_button" onClick={() => setShowAddProduct(true)}>ADD</button>    
+            }
             
             {
-                showAddProduct && <form class="details" onSubmit={()=>addProduct()} style={{ float: "left", margin: "15px" }}>
+                showAddProduct && 
+                
+                <form class="details" onSubmit={addProduct} style={{ float: "left", margin: "15px" }}>
+                        {/* require!!! onSubmit={this.handleSubmit} */}
 
 
-                <Box
+                 <Box
                     component="form"
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
@@ -41,17 +45,17 @@ function ProductsPage() {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="outlined-basic" label="id" variant="outlined" onChange={(e) => setProduct({ ...product, id: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
-                    <TextField id="outlined-basic" label="name" variant="outlined" onChange={(e) => setProduct({ ...product, name: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
-                    <TextField id="outlined-basic" label="price" variant="outlined" onChange={(e) => setProduct({ ...product, price: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
-                    <TextField id="outlined-basic" label="quantity" variant="outlined" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} style={{ fontSize: "20px" }} />
+                    <TextField required id="outlined-basic" label="id" variant="outlined" onChange={(e) => setProduct({ ...product, id: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
+                    <TextField required id="outlined-basic" label="name" variant="outlined" onChange={(e) => setProduct({ ...product, name: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
+                    <TextField required id="outlined-basic" label="price" variant="outlined" onChange={(e) => setProduct({ ...product, price: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
+                    <TextField required id="outlined-basic" label="quantity" variant="outlined" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} style={{ fontSize: "20px" }} />
                 </Box><br />
-                <input class="small_button" type={"submit"} value="Add" />
+                        <input type={"submit"} class="small_button" value="Add" />
 
-                <Button class="small_button" onClick={setShowAddProduct(false)}>cancle</Button>
+                 <button class="small_button" onClick={()=>setShowAddProduct(false)}>cancle</button>
 
-                <br /><br />
-            </form>
+                 <br /><br />
+             </form>
             }
             
         </div>
