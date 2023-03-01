@@ -14,12 +14,9 @@ function ProductsPage() {
 
     const dispatch = useDispatch()
 
-    const addProduct = () =>
-    {
+    const addProduct = () =>{
         dispatch({ type: "ADD_PRODUCT", payload: product })
         setShowAddProduct(!showAddProduct)
-        
-
     }
     
     return <div>
@@ -31,25 +28,24 @@ function ProductsPage() {
             }
             
             {
-                showAddProduct && 
-                
+                showAddProduct 
+                &&
                 <form class="details" onSubmit={addProduct} style={{ float: "left", margin: "15px" }}>
-                        {/* require!!! onSubmit={this.handleSubmit} */}
 
-
-                 <Box
+                 {/* <Box
                     component="form"
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
                     }}
                     noValidate
                     autoComplete="off"
-                >
+                > */}
                     <TextField required id="outlined-basic" label="id" variant="outlined" onChange={(e) => setProduct({ ...product, id: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
                     <TextField required id="outlined-basic" label="name" variant="outlined" onChange={(e) => setProduct({ ...product, name: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
                     <TextField required id="outlined-basic" label="price" variant="outlined" onChange={(e) => setProduct({ ...product, price: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
                     <TextField required id="outlined-basic" label="quantity" variant="outlined" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} style={{ fontSize: "20px" }} />
-                </Box><br />
+                {/* </Box> */}
+                <br />
                         <input type={"submit"} class="small_button" value="Add" />
 
                  <button class="small_button" onClick={()=>setShowAddProduct(false)}>cancle</button>
