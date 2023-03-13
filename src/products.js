@@ -40,10 +40,10 @@ function ProductsPage() {
                     noValidate
                     autoComplete="off"
                 > */}
-                    <TextField required id="outlined-basic" label="id" variant="outlined" onChange={(e) => setProduct({ ...product, id: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
+                    <TextField required id="outlined-basic" label="id" variant="outlined" type={"number"} onChange={(e) => setProduct({ ...product, id: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
                     <TextField required id="outlined-basic" label="name" variant="outlined" onChange={(e) => setProduct({ ...product, name: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
-                    <TextField required id="outlined-basic" label="price" variant="outlined" onChange={(e) => setProduct({ ...product, price: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
-                    <TextField required id="outlined-basic" label="quantity" variant="outlined" onChange={(e) => setProduct({ ...product, quantity: e.target.value })} style={{ fontSize: "20px" }} />
+                    <TextField required id="outlined-basic" label="price" variant="outlined" type={"number"} onChange={(e) => setProduct({ ...product, price: e.target.value })} style={{ fontSize: "20px" }} /><br /><br />
+                    <TextField required id="outlined-basic" label="quantity" variant="outlined" type={"number"} onChange={(e) => setProduct({ ...product, quantity: e.target.value })} style={{ fontSize: "20px" }} />
                 {/* </Box> */}
                 <br />
                         <input type={"submit"} class="small_button" value="Add" />

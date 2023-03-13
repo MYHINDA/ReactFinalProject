@@ -32,8 +32,15 @@ function AppReducer(state = initalValue , action) {
     switch (action.type) {
         case "LOAD_DATA":
             return { state:action.payload };
-        case "ADD_PRODUCT":
-            return { ...state, products: [...state.products, action.payload] };
+        case "ADD_PRODUCT":            
+
+            return {
+                ...state, products: [...state.products, {
+                    id: parseInt(action.payload.id),
+                    name: action.payload.name,
+                    price: parseInt(action.payload.price),
+                    quantity: parseInt(action.payload.quantity)
+            } ] };
         case "ADD_CUSTOMER":
             return { ...state, customers: [...state.customers, action.payload] };
         case "ADD_PURCHASES":
